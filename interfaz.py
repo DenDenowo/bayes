@@ -1,9 +1,14 @@
 import tkinter as tk
+from tkinter import messagebox
 from controlador import *
 
 controlador = controlador()
 def calcular(genero, tipo, enfermedad):
-    controlador.calcularProbabilidad(genero, tipo, enfermedad)
+    probabilidad = 0
+    probabilidad = controlador.calcularProbabilidad(genero, tipo, enfermedad)
+    # Mostrar el resultado
+    mensaje = "La probabilidad de este caso es de: " + str(probabilidad)
+    messagebox.showinfo("Resultado", mensaje)
 
 # Crear la ventana principal
 ventana = tk.Tk()
