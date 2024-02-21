@@ -12,7 +12,7 @@ class controlador:
         M=0.4612
         #Tipo
         A=0.9209
-        H=0.0791
+        Hospitalizado=0.0791
         #Enfermedad
         D=0.0815
         O=0.1028
@@ -21,10 +21,10 @@ class controlador:
         N=0.645
         #Hombre hospitalizado y ambulatorio
         HA= H*A
-        HH= H*H
+        HH= H*Hospitalizado
         #Mujer hospitalizada y ambulatorio
         MA= M*A
-        MH= M*H
+        MH= M*Hospitalizado
         
         #Hombre enfermedades ambulatorio
         HAD = HA * D
@@ -57,37 +57,37 @@ class controlador:
         if genero == "Hombre":
             if tipo == "Ambulatorio":
                 if enfermedad == "Diabetes":
-                    self.probabilidad = (HA * HAD)/(HA * HAD + HH * HHD)
+                    self.probabilidad = (HAD)/(HAD + HAO + HAT+ HAS + HAN)
                     self.clave = 1
                 elif enfermedad == "Hipertensión":
-                    self.probabilidad = (HA * HAS)/(HA * HAS + HH * HHS)
+                    self.probabilidad = (HAS)/(HAD + HAO + HAT+ HAS + HAN)
                     self.clave = 2
                 elif enfermedad == "Tabaquismo":
-                    self.probabilidad = (HA * HAT)/(HA * HAT + HH * HHT)
+                    self.probabilidad = (HAT)/(HAD + HAO + HAT+ HAS + HAN)
                     self.clave = 3
                 elif enfermedad == "Obesidad":
-                    self.probabilidad = (HA * HAO)/(HA * HAO + HH * HHO)
+                    self.probabilidad = (HAO)/(HAD + HAO + HAT+ HAS + HAN)
                     self.clave = 4
                 elif enfermedad == "Otros/Ninguna":
-                    self.probabilidad = (HA * HAN)/(HA * HAN + HH * HHN)
+                    self.probabilidad = (HAN)/(HAD + HAO + HAT+ HAS + HAN)
                     self.clave = 5
                 else:
                     print("Error en enfermedad")
             elif tipo == "Hospitalizado":
                 if enfermedad == "Diabetes":
-                    self.probabilidad = HH * HHD/(HH * HHD + HA * HAD)
+                    self.probabilidad = HHD/(HHD + HHO + HHS + HHN + HHT)
                     self.clave = 6
                 elif enfermedad == "Hipertensión":
-                    self.probabilidad = HH * HHS/(HH * HHS + HA * HAS)
+                    self.probabilidad = HHS/(HHD + HHO + HHS + HHN + HHT)
                     self.clave = 7
                 elif enfermedad == "Tabaquismo":
-                    self.probabilidad = HH * HHT/(HH * HHT + HA * HAT)
+                    self.probabilidad = HHT/(HHD + HHO + HHS + HHN + HHT)
                     self.clave = 8
                 elif enfermedad == "Obesidad":
-                    self.probabilidad = HH * HHO/(HH * HHO + HA * HAO)
+                    self.probabilidad = HHO/(HHD + HHO + HHS + HHN + HHT)
                     self.clave = 9
                 elif enfermedad == "Otros/Ninguna":
-                    self.probabilidad = HH * HHN/( HH * HHN + HA * HAN)
+                    self.probabilidad = HHN/(HHD + HHO + HHS + HHN + HHT)
                     self.clave = 10
                 else:
                     print("Error en enfermedad")
@@ -96,37 +96,37 @@ class controlador:
         elif genero == "Mujer":
             if tipo == "Ambulatorio":
                 if enfermedad == "Diabetes":
-                    self.probabilidad = MA * MAD/(MA * MAD + MH * MHD)
+                    self.probabilidad = MAD/(MAD+ MAN + MAO + MAS + MAT)
                     self.clave = 11
                 elif enfermedad == "Hipertensión":
-                    self.probabilidad = MA * MAS/(MA * MAS + MH * MHS)
+                    self.probabilidad = MAS/(MAD+ MAN + MAO + MAS + MAT)
                     self.clave = 12
                 elif enfermedad == "Tabaquismo":
-                    self.probabilidad = MA * MAT/(MA * MAT + MH * MHT)
+                    self.probabilidad = MAT/(MAD+ MAN + MAO + MAS + MAT)
                     self.clave = 13
                 elif enfermedad == "Obesidad":
-                    self.probabilidad = MA * MAO/(MA * MAO + MH * MHO)
+                    self.probabilidad = MAO/(MAD+ MAN + MAO + MAS + MAT)
                     self.clave = 14
                 elif enfermedad == "Otros/Ninguna":
-                    self.probabilidad = MA * MAN/(MA * MAN + MH * MHN)
+                    self.probabilidad = MAN/(MAD+ MAN + MAO + MAS + MAT)
                     self.clave = 15
                 else:
                     print("Error en enfermedad")
             elif tipo == "Hospitalizado":
                 if enfermedad == "Diabetes":
-                    self.probabilidad = MH * MHD/(MH * MHD + MA * MAD)
+                    self.probabilidad = MHD/(MHD + MHN + MHO + MHS + MHT)
                     self.clave = 16
                 elif enfermedad == "Hipertensión":
-                    self.probabilidad = MH * MHS/(MH * MHS + MA * MAS)
+                    self.probabilidad = MHS/(MHD + MHN + MHO + MHS + MHT)
                     self.clave = 17
                 elif enfermedad == "Tabaquismo":
-                    self.probabilidad = MH * MHT/(MH * MHT + MA * MAT)
+                    self.probabilidad = MHT/(MHD + MHN + MHO + MHS + MHT)
                     self.clave = 18
                 elif enfermedad == "Obesidad":
-                    self.probabilidad = MH * MHO/(MH * MHO + MA * MAO)
+                    self.probabilidad = MHO/(MHD + MHN + MHO + MHS + MHT)
                     self.clave = 19
                 elif enfermedad == "Otros/Ninguna":
-                    self.probabilidad = MH * MHN/(MH * MHN + MA * MAN)
+                    self.probabilidad = MHN/(MHD + MHN + MHO + MHS + MHT)
                     self.clave = 20
                 else:
                     print("Error en enfermedad")
